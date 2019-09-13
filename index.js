@@ -29,13 +29,7 @@ class Stack {
         if(!head) return "The stack is empty.";
 
         this.top = head.next;
-        
-        while (head) {
-            console.log(head.value, value);
-            if (head.value === value){
-                value.pop();
-            }
-        }
+    
         return head.value;
     }
 
@@ -65,6 +59,17 @@ class Stack {
         return items;
     }
 
+    popUntil(value){
+        if(!this.top){
+            return;
+        }
+        while(this.top.value !== value){
+            this.pop();
+        }
+
+        return this.display();
+    }
+
 
 }
 
@@ -74,6 +79,8 @@ starTrek.push("Kirk");
 starTrek.push("Spock");
 starTrek.push("McCoy");
 starTrek.push("Scotty");
-starTrek.pop("McCoy")
 
-console.log(starTrek.display());
+
+
+
+console.log(starTrek.popUntil("McCoy"));
